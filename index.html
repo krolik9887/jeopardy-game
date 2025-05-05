@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Своя Гра</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; max-width: 600px; margin: auto; }
+    .cell { background: #0074D9; color: white; padding: 20px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>Своя Гра</h1>
+  <div class="grid" id="gameGrid"></div>
+
+  <div id="questionBox" style="display:none;">
+    <h2 id="questionText"></h2>
+    <button onclick="showAnswer()">Показати відповідь</button>
+    <h3 id="answerText" style="display:none;"></h3>
+    <button onclick="closeQuestion()">Назад</button>
+  </div>
+
+  <script>
+    let data = {};
+    fetch('questions.json').then(res => res.json()).then(json => {
+      data = json;
+      const grid = document.getElementById('gameGrid');
+      data.categories.forEach((cat, ci) => {
+        cat.questions.forEach((q, qi) => {
+          const div = document.createElement('div');
+          div.className = 'cell';
+          div.innerText = cat.name + " – " + q.points;
+          div.onclick = () => openQuestion(ci, qi);
+          grid.appendChild(div);
+        });
+      });
+    });
+
+    function openQuestion(ci, qi) {
+      const q = data.categories[ci].questions[qi];
+      document.getElementById('questionText').innerHTML = q.question;
+      document.getElementById('answerText').innerText = "Відповідь: " + q.answer;
+      document.getElementById('gameGrid').style.display = 'none';
+      document.getElementById('questionBox').style.display = 'block';
+    }
+
+    function showAnswer() {
+      document.getElementById('answerText').style.display = 'block';
+    }
+
+    function closeQuestion() {
+      document.getElementById('questionBox').style.display = 'none';
+      document.getElementById('answerText').style.display = 'none';
+      document.getElementById('gameGrid').style.display = 'grid';
+    }
+  </script>
+</body>
+</html>

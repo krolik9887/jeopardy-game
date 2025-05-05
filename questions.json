@@ -1,0 +1,24 @@
+{
+  "categories": [
+    {
+      "name": "Мистецтво",
+      "questions": [
+        {
+          "points": 100,
+          "question": "<img src='https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/440px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg' width='300'><br>Хто автор цієї картини?",
+          "answer": "Леонардо да Вінчі"
+        },
+        {
+          "points": 200,
+          "question": "<audio controls><source src='https://www2.cs.uic.edu/~i101/SoundFiles/StarWars60.wav' type='audio/wav'>Ваш браузер не підтримує аудіо</audio><br>З якого це фільму?",
+          "answer": "Зоряні війни"
+        },
+        {
+          "points": 300,
+          "question": "<video width='320' height='240' controls><source src='https://www.w3schools.com/html/mov_bbb.mp4' type='video/mp4'>Ваш браузер не підтримує відео</video><br>Яке ім’я цього кролика?",
+          "answer": "Кролик Банні"
+        }
+      ]
+    }
+  ]
+}
